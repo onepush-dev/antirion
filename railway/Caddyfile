@@ -1,0 +1,25 @@
+{
+	admin off
+	auto_https off
+	servers {
+		trusted_proxies static private_ranges 100.64.0.0/10
+	}
+}
+
+:{$PORT:8080} {
+	# Admin plane: console, Admin API, SCIM
+	@admin path /ui /ui/* /admin /admin/* /scim /scim/*
+	handle @admin {
+		reverse_proxy 127.0.0.1:{$ANTIRION_ADMIN_PORT:18081}
+	}
+	# Bare root opens the console
+	handle / {
+		redir * /ui/ 302
+	}
+	# Everything else is the data plane: /v1, /v1beta, /anthropic, /gemini, /openai, /mcp, /-/readyz, …
+	handle {
+		reverse_proxy 127.0.0.1:{$ANTIRION_DATA_PORT:18080} {
+			flush_interval -1
+		}
+	}
+}
