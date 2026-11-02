@@ -1,6 +1,6 @@
 # Antirion — single-binary AI/LLM gateway with a built-in console (Apache-2.0). Deploy on Railway with one click.
 
-[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/PENDING)
+[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/Wv8V7Q)
 
 [Antirion](https://github.com/eliasbiondo/antirion) is an AI gateway: one OpenAI-, Anthropic- and Gemini-compatible endpoint in front of your providers, with routing and fallbacks, virtual keys, budgets and spend tracking, guardrails, caching, MCP and a web console. This template runs the official `eliasbiondo/antirion:0.1.1` release binary (pinned by digest) with its embedded store on a Railway volume.
 
