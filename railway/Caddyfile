@@ -12,6 +12,11 @@
 	handle @admin {
 		reverse_proxy 127.0.0.1:{$ANTIRION_ADMIN_PORT:18081}
 	}
+	# Railway health check (its path may not contain '-'): the gateway's readiness probe
+	handle /healthz {
+		rewrite * /-/readyz
+		reverse_proxy 127.0.0.1:{$ANTIRION_DATA_PORT:18080}
+	}
 	# Bare root opens the console
 	handle / {
 		redir * /ui/ 302

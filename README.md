@@ -7,7 +7,7 @@
 ## Services
 | Service | Image | Port | Volume |
 |---|---|---|---|
-| Antirion | `ghcr.io/onepush-dev/antirion:0.1.1` | Railway `PORT` (public HTTPS), health `/-/readyz` | `/var/lib/antirion` (embedded store, spool, generated encryption key) |
+| Antirion | `ghcr.io/onepush-dev/antirion:0.1.1` | Railway `PORT` (public HTTPS), health `/healthz` (Caddy → gateway `/-/readyz`) | `/var/lib/antirion` (embedded store, spool, generated encryption key) |
 
 One public domain serves both planes through a small Caddy edge inside the container:
 - **Console:** `https://<domain>/ui/` (the bare domain redirects there); Admin API under `/admin`, SCIM under `/scim`
